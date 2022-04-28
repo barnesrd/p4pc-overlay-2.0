@@ -1,14 +1,15 @@
 var timestampOld;
-var timestamp;
-var pName1;
-var pScore1;
-var pName2;
-var pScore2;
-var mText3;
-
-var xmlDoc;
 
 var xhr = new XMLHttpRequest();
+
+var jsonDoc = {
+    "timestamp":null,
+    "pName1":null,
+    "pName2":null,
+    "pScore1":null,
+    "pScore2":null,
+    "mText3":null
+}
 
 var animating = false;
 var doUpdate = false;
@@ -16,28 +17,16 @@ var doUpdate = false;
 function init() {
     window.onerror = function(msg, url, linenumber) {
         alert(msg+' Line Number: '+linenumber + '\nNotify Jolteo_');
-        //window.stop();
-        //return true;
     }
 
-    xhr.overrideMimeType('text/xml');
-    
-    var timeout = this.window.setInterval(function() {
-        pollHandler();
-    }, 100);
+    xhr.overrideMimeType('application/json');
 
-    $('#pName1').html('');
-    $('#pScore1').html('');
-    $('#pName2').html('');
-    $('#pScore2').html('');
-    $('#mText3').html('');
-    var boardtimeline = anime.timeline({
+    anime.timeline({
         duration:500,
         easing:'easeOutExpo'
-    });
-    boardtimeline.add({
+    }).add({
         targets:'#board',
-        opacity: [0,1],
+        opacity: [0,.85],
     },0)
     .add({
         targets:'#p1board',
@@ -57,12 +46,14 @@ function init() {
         targets:'#p2board',
         translateX:[100,0]
     },0);
+
+    this.window.setInterval(pollHandler, 100);
 }
 
 function pollHandler()
 {
     loadData();
-    if (timestamp != timestampOld) {
+    if (jsonDoc.timestamp != timestampOld) {
         doUpdate = true;
     }
     if (!animating && doUpdate) {
@@ -71,149 +62,58 @@ function pollHandler()
 }
 
 function loadData() {
-    xhr.open('GET', '../xml/streamcontrol.xml');
-    xhr.send();
-    xhr.onreadystatechange = function(){
-            xmlDoc = xhr.responseXML;
-            try{
-            pName1 = getValueFromTag(xmlDoc,'pName1');
-            pName2 = getValueFromTag(xmlDoc,'pName2');
-            pScore1 = getValueFromTag(xmlDoc,'pScore1');
-            pScore2 = getValueFromTag(xmlDoc,'pScore2');
-            mText3 = getValueFromTag(xmlDoc,'mText3');
-            timestampOld = timestamp;
-            timestamp = getValueFromTag(xmlDoc,'timestamp');
-            }catch(err){}
-            
+    xhr.open("GET", "../xml/scoreboard_data.json", false);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            timestampOld = jsonDoc.timestamp;
+            jsonDoc = JSON.parse(xhr.responseText);
+        }
     }
+    xhr.send();
+}
+
+function updateByTag(tag, startx=0, endx=0){
+    animating = true;
+    anime.timeline({
+        targets: tag,
+        duration: 500
+    }).add({
+        opacity:[1,0],
+        translateX:[startx, endx],
+        easing: 'easeInExpo',
+        complete: () => {
+            $(tag).html(jsonDoc[tag.slice(1)]);
+        }
+    }, 0).add({
+        opacity:[0,1],
+        translateX: [endx, startx],
+        easing: 'easeOutExpo',
+        complete: () => {
+            animating = false;
+        }
+    }, 500);
 }
 
 function updateBoard() {
-    if ($('#pName1').html() != pName1) {
-        animating = true;
-        var p1nametimeline = anime.timeline({
-            targets:'#pName1',
-            duration:500
-        });
-        p1nametimeline.add({
-            opacity:[1,0],
-            translateX:[0,100],
-            easing: 'easeInExpo',
-            complete:function(){
-                $('#pName1').html(pName1);
-            }
-        },0)
-        .add({
-            opacity:[0,1],
-            translateX:[100,0],
-            easing: 'easeOutExpo',
-            complete:function(){
-                animating=false;
-            }
-        },500);
+    if ($('#pName1').html() != jsonDoc.pName1) {
+        updateByTag("#pName1", 0, 100);
     }
     
-    if ($('#pName2').html() != pName2) {
-        animating = true;
-        var p2nametimeline = anime.timeline({
-            targets:'#pName2',
-            duration:500
-        });
-        p2nametimeline.add({
-            opacity:[1,0],
-            translateX:[0,-100],
-            easing: 'easeInExpo',
-            complete:function(){
-                $('#pName2').html(pName2);
-            }
-        },0)
-        .add({
-            opacity:[0,1],
-            translateX:[-100,0],
-            easing: 'easeOutExpo',
-            complete:function(){
-                animating=false;
-            }
-        },500);
+    if ($('#pName2').html() != jsonDoc.pName2) {
+        updateByTag("#pName2", 0, -100);
     }
     
-    if ($('#pScore1').html() != pScore1) {
-        animating = true;
-        var p1scoretimeline = anime.timeline({
-            targets:'#pScore1',
-            duration:500
-        });
-        p1scoretimeline.add({
-            opacity:[1,0],
-            easing:'easeInExpo',
-            complete:function(){
-                $('#pScore1').html(pScore1);
-            }
-        })
-        .add({
-            opacity:[0,1],
-            easing:'easeOutExpo',
-            complete:function(){
-                animating=false;
-            }
-        });
+    if ($('#pScore1').html() != jsonDoc.pScore1) {
+        updateByTag("#pScore1")
     }
     
-    if ($('#pScore2').html() != pScore2) {
-        animating = true;
-        var p2scoretimeline = anime.timeline({
-            targets:'#pScore2',
-            duration:500
-        });
-        p2scoretimeline.add({
-            opacity:[1,0],
-            easing:'easeInExpo',
-            complete:function(){
-                $('#pScore2').html(pScore2);
-            }
-        })
-        .add({
-            opacity:[0,1],
-            easing:'easeOutExpo',
-            complete:function(){
-                animating=false;
-            }
-        });
+    if ($('#pScore2').html() != jsonDoc.pScore2) {
+        updateByTag("#pScore2");
     }
     
-    if ($('#mText3').html() != mText3) {
-        animating = true;
-        var titletimeline = anime.timeline({
-            targets:'#mText3',
-            duration:500
-        });
-        titletimeline.add({
-            opacity:[1,0],
-            easing:'easeInExpo',
-            complete:function(){
-                $('#mText3').html(mText3);
-            }
-        })
-        .add({
-            opacity:[0,1],
-            easing:'easeOutExpo',
-            complete:function(){
-                animating=false;
-            }
-        });
+    if ($('#mText3').html() != jsonDoc.mText3) {
+        updateByTag("#mText3");
     }
     
     doUpdate = false;
-}
-
-function getValueFromTag (xmlDoc,tag) {
-    if (xmlDoc.getElementsByTagName(tag).length != 0 ) {
-        if (xmlDoc.getElementsByTagName(tag)[0].childNodes.length == 0) {
-                return '';
-            } else {
-                return xmlDoc.getElementsByTagName(tag)[0].childNodes[0].nodeValue;
-        }
-    } else {
-        return '';
-    }
 }
