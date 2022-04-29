@@ -62,7 +62,7 @@ function pollHandler()
 }
 
 function loadData() {
-    xhr.open("GET", "../xml/scoreboard_data.json", false);
+    xhr.open("GET", "../json/scoreboard_data.json", false);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
             timestampOld = jsonDoc.timestamp;

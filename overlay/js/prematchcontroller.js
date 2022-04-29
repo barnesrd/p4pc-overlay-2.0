@@ -14,6 +14,8 @@ var jsonDoc = {
 var p1c;
 var p2c;
 
+var intial = true;
+
 var container = document.getElementById('board');
 
 var doUpdate = false;
@@ -48,7 +50,7 @@ function init(){
 }
 
 function loadData(){
-    xhr.open("GET", "../xml/prematch_data.json", false);
+    xhr.open("GET", "../json/prematch_data.json", false);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
             timestampOld = jsonDoc.timestamp;
@@ -159,6 +161,7 @@ function updateBoard(){
                 let name = "";
                 if(shadow=="Shadow") name=jsonDoc.p1c.slice(7);
                 else name = jsonDoc.p1c;
+                if(name=="") name = 'Blank'
                 $('#p1chartitle').attr('src', `../images/titles/${name} Title.png`).attr('height', 150).attr('width', 338);
             }
         },0).add({
@@ -192,7 +195,7 @@ function updateBoard(){
             targets:'#p2c',
             duration:500
         }).add({
-            translateX:[1920-$('#p2c').width(), 1920+$('#p2c').width()],
+            translateX:[-1920+$('#p2c').width(), -1920-$('#p2c').width()],
             opacity:[1,0],
             easing:'easeInExpo',
             complete:function(){
@@ -210,6 +213,7 @@ function updateBoard(){
                 let name = "";
                 if(shadow=="Shadow") name = jsonDoc.p2c.slice(7);
                 else name = jsonDoc.p2c;
+                if(name=="") name = 'Blank'
                 $('#p2chartitle').attr('src', `../images/titles/${name} Title.png`).attr('height', 150).attr('width', 338)
             }
         },0).add({
@@ -236,8 +240,9 @@ function updateBoard(){
         },500);
     }
 
-    if ($('#title').html() != jsonDoc.match || $('#bg').opacity() == 0){
+    if ($('#title').html() != jsonDoc.match){
         animating=true;
+        initial=false;
         anime.timeline({
             duration:500
         }).add({

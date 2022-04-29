@@ -59,7 +59,7 @@ function updateByTag(tag, startx=0, endx=0){
 }
 
 function loadData(){
-    xhr.open("GET", "../xml/comms_data.json", false);
+    xhr.open("GET", "../json/comms_data.json", false);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
             timestampOld = jsonDoc.timestamp;
@@ -86,7 +86,7 @@ function updateBoard(){
         updateByTag('#c2plug', 0, -200)
     }
     
-    if ($('#c1nav').html() != jsonDoc.c1nav || $('#c1nav').opacity() == 0){
+    if ($('#c1nav').html() != jsonDoc.c1nav){
         animating=true;
         anime.timeline({
             targets:['#c1nav', '#c1navbg', '#c1navef'],
@@ -125,7 +125,7 @@ function updateBoard(){
         });
     }
     
-    if ($('#c2nav').html() != jsonDoc.c2nav || $('#c2nav').opacity() == 0){
+    if ($('#c2nav').html() != jsonDoc.c2nav){
         animating=true;
         anime.timeline({
             targets:['#c2nav', '#c2navbg', '#c2navef'],
