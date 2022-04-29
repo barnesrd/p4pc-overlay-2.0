@@ -97,8 +97,8 @@ function updateBoard(){
             easing:'easeInExpo',
             complete: () => {
                 $('#c1nav').attr('src', `../images/navs/${jsonDoc.c1nav}.png`).html(jsonDoc.c1nav);
-                $('#c1navbg').attr('src', `../images/navs/${jsonDoc.c1nav}BG.png`).html(jsonDoc.c1nav);
-                $('#c1navef').attr('src', `../images/navs/${jsonDoc.c1nav}EF.png`).html(jsonDoc.c1nav);
+                $('#c1navbg').attr('src', `../images/navs/${jsonDoc.c1nav}BG.png`);
+                $('#c1navef').attr('src', `../images/navs/${jsonDoc.c1nav}EF.png`);
             }
         }).add({
             translateX:[100,0],
@@ -136,8 +136,8 @@ function updateBoard(){
             easing:'easeInExpo',
             complete: () => {
                 $('#c2nav').attr('src', `../images/navs/${jsonDoc.c2nav}.png`).html(jsonDoc.c2nav);
-                $('#c2navbg').attr('src', `../images/navs/${jsonDoc.c2nav}BG.png`).html(jsonDoc.c2nav);
-                $('#c2navef').attr('src', `../images/navs/${jsonDoc.c2nav}EF.png`).html(jsonDoc.c2nav);
+                $('#c2navbg').attr('src', `../images/navs/${jsonDoc.c2nav}BG.png`);
+                $('#c2navef').attr('src', `../images/navs/${jsonDoc.c2nav}EF.png`);
             }
         },0).add({
             rotateY:['0deg', '180deg']
