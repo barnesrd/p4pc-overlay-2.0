@@ -1,0 +1,10 @@
+ - Overlays -
+ All overlays are located in the html-overlays folder.
+ To import these overlays to OBS, drag the file to the sources tab of a scene
+
+ - Fuukabot Setup - 
+ In order to use Fuukabot, you will need to edit the .env file in a text editor
+ of your choice, and provide your channel's name. This is used to inidcate which
+ channel the bot will connect to. 
+
+ This bot is used to control values for the scoreboard via twitch chat.
