@@ -26,16 +26,18 @@ function init() {
         easing:'easeOutExpo'
     }).add({
         targets:'#board',
-        opacity: [0,.85],
+        opacity: [0,1],
     },0)
     .add({
         targets:'#p1board',
         rotateY: ['0deg', '180deg'],
+        opacity: [0,.90],
         duration:0
     },0)
     .add({
         targets:'#p2board',
         rotateY: ['0deg', '180deg'],
+        opacity: [0,.90],
         duration:0
     },0)
     .add({

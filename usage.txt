@@ -1,3 +1,5 @@
+ Last updated 8/7/2022 - Version 2.0 PFC Redux
+
  - Overlays -
  All overlays are located in the html-overlays folder.
  To import these overlays to OBS, drag the file to the sources tab of a scene
@@ -6,5 +8,17 @@
  In order to use Fuukabot, you will need to edit the .env file in a text editor
  of your choice, and provide your channel's name. This is used to inidcate which
  channel the bot will connect to. 
-
  This bot is used to control values for the scoreboard via twitch chat.
+
+ - Thumbnail Generator -
+ The generator operates on json files that can be made within the program.
+ Further instructions viewable in the Home page of the program.
+
+ NOTE:
+	If you would like to use any backgrounds for prematch overlays or
+	for thumbnail backgrounds, you will need to place the image files
+	in overlay/images/bgs. These images will need to be 1920x1080 to
+	work correctly.
+
+ If you would like to make your own edits to this program, contact me on discord
+ for the source code: Jolteo_#4261

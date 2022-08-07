@@ -8,11 +8,13 @@ var jsonDoc = {
     "p1c": null,
     "p2n": null,
     "p2c": null,
-    "match": ''
+    "match": '',
+    "bg": ''
 }
 
 var p1c;
 var p2c;
+var bg;
 
 var intial = true;
 
@@ -242,17 +244,9 @@ function updateBoard(){
 
     if ($('#title').html() != jsonDoc.match){
         animating=true;
-        initial=false;
         anime.timeline({
             duration:500
-        }).add({
-            targets:"#bg",
-            opacity:[1,0],
-            easing:"easeInExpo",
-            complete:function(){
-                $('#bg').attr('src', `../images/${jsonDoc.match}.png`);
-            }
-        }, 0)
+        })
         .add({
             targets:"#title",
             opacity:[1,0],
@@ -262,11 +256,6 @@ function updateBoard(){
             }
         }, 0)
         .add({
-            targets:"#bg",
-            opacity:[0,1],
-            easing:"easeOutQuad",
-        }, 500)
-        .add({
             targets:"#title",
             opacity:[0,1],
             easing:"easeOutQuad",
@@ -274,5 +263,29 @@ function updateBoard(){
                 animating=false;
             }
         }, 500);
+    }
+
+    if (bg != jsonDoc.bg){
+        animating = true;
+        anime.timeline({
+            duration:500
+        })
+        .add({
+            targets:"#bg",
+            opacity:[1,0],
+            easing:"easeInExpo",
+            complete:function(){
+                bg = jsonDoc.bg;
+                $('#bg').attr('src', `../images/bgs/${jsonDoc.bg}.png`);
+            }
+        }, 0)
+        .add({
+            targets:"#bg",
+            opacity:[0,1],
+            easing:"easeOutQuad",
+            complete:function(){
+                animating=false;
+            }
+        }, 500)
     }
 }

@@ -1,8 +1,59 @@
 {
-    "Players": {
-
+    "Players": {},
+    "Commentators": {},
+    "Characters": {
+        "Yu Narukami": true,
+        "Yosuke Hanamura": true,
+        "Chie Satonaka": true,
+        "Yukiko Amagi": true,
+        "Kanji Tatsumi": true,
+        "Teddie": true,
+        "Naoto Shirogane": true,
+        "Labrys": true,
+        "Akihiko Sanada": true,
+        "Mitsuru Kirijo": true,
+        "Aigis": true,
+        "Elizabeth": false,
+        "Yukari Takeba": true,
+        "Junpei Iori": true,
+        "Ken Amada": true,
+        "Rise Kujikawa": true,
+        "Tohru Adachi": false,
+        "Marie": true,
+        "Margaret": false,
+        "Sho": false,
+        "Sho Minazuki": false
     },
-    "Commentators": {
-
-    }
+    "Matches": {
+        "Intermission": "VelvetRoom",
+        "Pre Top-8": "RecRoom",
+        "Crew Battle": "GreenDarkHour",
+        "First to 10": "RedDarkHour",
+        "Grand Finals": "RedAltarNoCrystal",
+        "Losers Finals": "SchoolGateDarkHour",
+        "Losers Top-8": "TartarusSchool",
+        "Winners Finals": "RedDarkHour",
+        "Winners Top-8": "RedStairwell"
+    },
+    "Navs": [
+        "Aigis",
+        "Akihiko Sanada",
+        "Chie Satonaka",
+        "Elizabeth",
+        "Fuuka Yamagishi",
+        "Junpei Iori",
+        "Kanji Tatsumi",
+        "Ken Amada",
+        "Labrys",
+        "Mitsuru Kirijo",
+        "Nanako Dojima",
+        "Naoto Shirogane",
+        "Rise Kujikawa",
+        "Teddie",
+        "Tohru Adachi",
+        "Yosuke Hanamura",
+        "Yu Narukami",
+        "Yukari Takeba",
+        "Yukiko Amagi"
+    ]
 }
