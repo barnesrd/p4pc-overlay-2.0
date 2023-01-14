@@ -91,14 +91,16 @@ function updateByTag(tag, startx=0, endx=0){
 }
 
 function completeAnimation(tag, name, p1){
-    $(tag).removeAttr('height').removeAttr('width');
+    $(tag).removeAttr('height').removeAttr('width').removeAttr('top');
     $(tag).attr('src', `../images/characters/${name}.png`).html(name).on('load', () => {
         let ratio = $(tag).width()/$(tag).height();
         if(name =="Chie Satonaka" || name =="Shadow Chie Satonaka"){
-            $(tag).attr('height', 800).attr('width', 800*ratio);
+            $(tag).attr('height', 750).attr('width', 750*ratio);
+            $(tag).css({'top':'340'})
         }
         else{
             $(tag).attr('height', 850).attr('width', 850*ratio);
+            $(tag).css({'top':'280'});
         }
         if(p1){
             anime.timeline({
