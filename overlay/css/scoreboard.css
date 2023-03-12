@@ -45,7 +45,7 @@ body {
 	left:0px;
 	width:1920px;
 	height:1080px;
-	background-image:url('../images/Scoreboard_Round.png');
+	background-image:url('../images/scoreboard/Scoreboard_Round.png');
 }
 
 #countrymask {
@@ -57,7 +57,7 @@ body {
 	opacity: 1;
 	mask-mode:alpha;
 	mask-size: 100%;
-	-webkit-mask-image: url('../images/countryboard_masks.png');
+	-webkit-mask-image: url('../images/scoreboard/countryboard_masks.png');
 }
 
 #p1board {
@@ -68,7 +68,7 @@ body {
 	height:50px;
 	background-repeat: no-repeat;
 	z-index: 1;
-	background-image:url('../images/Left_Scoreboard.png');
+	background-image:url('../images/scoreboard/Left_Scoreboard.png');
 }
 
 #p1countryboard {
@@ -79,7 +79,7 @@ body {
 	height:50px;
 	opacity: 0;
 	z-index: -1;
-	background-image:url('../images/Left_CountryBoard.png');
+	background-image:url('../images/scoreboard/Left_CountryBoard.png');
 }
 
 #p1countryflag {
@@ -89,7 +89,7 @@ body {
 	opacity: .9;
 	mask-mode:alpha;
 	mask-size: 100%;
-	-webkit-mask-image: url('../images/leftmask.png');
+	-webkit-mask-image: url('../images/scoreboard/leftmask.png');
 }
 
 #p2board {
@@ -101,7 +101,7 @@ body {
 	background-repeat: no-repeat;
 	height:50px;
 	z-index: 1;
-	background-image:url('../images/Right_Scoreboard.png');
+	background-image:url('../images/scoreboard/Right_Scoreboard.png');
 }
 
 #p2countryboard {
@@ -112,7 +112,7 @@ body {
 	height:50px;
 	opacity: 0;
 	z-index: -1;
-	background-image:url('../images/Right_CountryBoard.png');
+	background-image:url('../images/scoreboard/Right_CountryBoard.png');
 }
 
 #p2countryflag {
@@ -122,38 +122,54 @@ body {
 	opacity: .9;
 	mask-mode:alpha;
 	mask-size: 100%;
-	-webkit-mask-image: url('../images/rightmask.png');
+	-webkit-mask-image: url('../images/scoreboard/rightmask.png');
 }
 
 #pName1 {
 	left:300px;
 	top:9px;
 	z-index: 3;
+	width: 345px;
+	white-space: nowrap;
+	overflow: hidden;
 }
 #pName2 {
-	left:1290px;
+	left:1275px;
 	top:8px;
+	width: 345px;
 	text-align:right;
 	z-index: 3;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 #pScore1 {
-	left:665px;
+	left:660px;
 	top:7px;
 	z-index: 3;
+	width: 54px;
+	text-align:center;
+	white-space: nowrap;
+	overflow: hidden;
 }
 #pScore2 {
-	left:1215px;
+	left:1210px;
 	top:7px;
 	z-index: 3;
+	width: 54px;
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 #mText3 {
 	color: #FFF;
 	position: absolute;
-	left: 790px;
+	left: 810px;
 	top: 4px;
-	width: 350px;
+	width: 300px; 
+  	overflow: hidden;
+	white-space: nowrap;
 	font-size: 35px;
 	font-family: p4pc;
 	text-align: center;

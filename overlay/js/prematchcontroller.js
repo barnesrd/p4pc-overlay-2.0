@@ -16,10 +16,6 @@ var p1c;
 var p2c;
 var bg;
 
-var intial = true;
-
-var container = document.getElementById('board');
-
 var doUpdate = false;
 var animating = false;
 
