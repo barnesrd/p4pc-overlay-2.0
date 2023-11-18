@@ -1,0 +1,171 @@
+@font-face {
+	font-family: 'p4pc';
+	src:url('fonts/LeagueGothic-Regular.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'p4pctitle';
+	src:url('fonts/earthsmightiestexpand.ttf') format('truetype');
+}
+
+body {
+	margin:0px;
+	background-color: rgba(0, 0, 0, 0);
+	font-family:  p4pc;
+	color:#FFFFFF;
+	-webkit-text-stroke: 1px black;
+}
+
+.dim {
+	filter:brightness(70%);
+	opacity: .7;
+}
+
+.titlePlate {
+	position: absolute;
+	top: 10px;
+	width: 862px;
+	height: 142px;
+	background-image: url("../images/texbox.png");
+	background-repeat: no-repeat;
+}
+
+.title {
+	position: absolute;
+	width: 620px;
+	height: 90px;
+    overflow: visible;
+    z-index: 100;
+	letter-spacing: 1px;
+	overflow: hidden;
+	font-size:90px;
+		text-transform: uppercase;
+	text-shadow: 
+	    2px 2px #000,
+		2px 2px #000;
+}
+
+.team1Hue {
+	filter: sepia(100%) saturate(300%) brightness(65%) hue-rotate(160deg);
+}
+
+.team2Hue {
+	filter: sepia(100%) saturate(800%) brightness(65%) hue-rotate(291deg);
+}
+
+.character-pin {
+	position: absolute;
+	left:20px;
+	top:7px;
+	transform: scaleX(-1);
+	z-index:3;
+}
+
+.strike1 {
+	position:absolute;
+	mask-mode:alpha;
+	-webkit-mask-image: url('../images/crew_battle/broken1.png');
+	-webkit-mask-repeat: no-repeat;
+}
+
+.strike2 {
+	position:absolute;
+	mask-mode:alpha;
+	-webkit-mask-image: url('../images/crew_battle/broken2.png');
+	-webkit-mask-repeat: no-repeat;
+}
+
+.deadFilter {
+	filter: sepia(100%) saturate(300%) brightness(70%) hue-rotate(300deg);
+}
+
+.alignNameLeft {
+	text-align: left;
+}
+
+.alignNameRight {
+	transform: scaleX(-1);
+	text-align: right;
+}
+
+.playerName {
+	position: absolute;
+	left:185px;
+	top:-5px;
+	width:660px;
+	font-size:70px;
+	letter-spacing: 1px;
+}
+
+.flippedPlayerName {
+	transform: scaleX(-1);
+	text-align: right;
+}
+
+.character {
+	position:relative;
+	width: auto;
+
+	z-index: 3;
+	mask-mode:alpha;
+	-webkit-mask-image: url('../images/crew_battle/character_alpha_test.png');
+	-webkit-mask-repeat: no-repeat;
+}
+
+.teamTag {
+	position: absolute;
+	z-index: 100;
+	letter-spacing: 1;
+}
+
+.playerPlate {
+	position: relative;
+	width: 500px;
+	height: 90px;
+}
+
+.team1 {
+	background-image: url("../images/crew_battle/player_plate_1.png");
+	background-repeat: no-repeat;
+}
+
+.team2 {
+	background-image: url("../images/crew_battle/player_plate_2.png");
+	background-repeat: no-repeat;
+	transform: scaleX(-1);
+}
+
+.flip {
+	transform: scaleX(-1);
+}
+
+.down {
+	position: absolute;
+	bottom: 0px;
+}
+
+.left {
+	left: 0px;
+}
+
+.right {
+	right: 0px;
+}
+
+.teamContainer {
+	width: 900px;
+	height: 1080px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items:end;
+}
+
+.teamRow {
+	display: flex;
+	width: 580px;
+	height: 900px;
+	align-items: center;
+	justify-content: space-evenly;
+	flex-direction: column;
+	margin: 0 -1em;
+}

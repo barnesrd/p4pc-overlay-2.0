@@ -94,7 +94,7 @@ body {
 
 #p2board {
 	position: absolute;
-	top: 4px;
+	top: 5px;
 	left: 1200px;
 	width:550px;
 	text-align:left;
@@ -144,7 +144,7 @@ body {
 }
 
 #pScore1 {
-	left:660px;
+	left:661px;
 	top:7px;
 	z-index: 3;
 	width: 54px;

@@ -10,8 +10,6 @@ var jsonDoc = {
     "c2plug": null
 }
 
-var xhr = new XMLHttpRequest()
-
 animating = false;
 doUpdate = false;
 
@@ -19,7 +17,6 @@ function init(){
     window.onerror = function(msg, url, linenumber) {
         alert(msg+' Line Number: '+linenumber + '\nNotify Jolteo_');
     }
-    xhr.overrideMimeType('application/json');
 
     anime({
         targets:['#c2nav', '#c2navbg', '#c2navef'],
@@ -59,14 +56,12 @@ function updateByTag(tag, startx=0, endx=0){
 }
 
 function loadData(){
-    xhr.open("GET", "../json/comms_data.json", false);
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4) {
-            timestampOld = jsonDoc.timestamp;
-            jsonDoc = JSON.parse(xhr.responseText);
-        }
-    }
-    xhr.send();
+    fetch("../json/comms_data.json").then(response => response.json()).then((response) => {
+        timestampOld = jsonDoc.timestamp;
+        jsonDoc = response;
+    }).catch((err) => {
+        console.log("Error loading json file at overlay/html-overlays/js/comms_data.json. Ensure that the file exists before reloading.");
+    });
 }
 
 function updateBoard(){

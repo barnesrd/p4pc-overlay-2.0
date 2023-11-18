@@ -35,6 +35,7 @@ body {
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	color:rgb(255, 212, 0);
+	-webkit-text-stroke: 1px black;
 }
 
 #bg {
@@ -60,8 +61,8 @@ body {
     text-align: center;
 	font-size:55px;
 	text-shadow: 
-	    7px 7px #000,
-		7px 7px #000;
+	    3px 3px #000,
+		3px 3px #000;
 }
 
 #p1n {

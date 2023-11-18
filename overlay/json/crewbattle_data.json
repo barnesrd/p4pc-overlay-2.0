@@ -1,5 +1,11 @@
 {
-    "timestamp" : "0",
-    "team1":[],
-    "team2":[]
+    "timestamp": "17003075791",
+    "team1": {
+        "name": "",
+        "players": []
+    },
+    "team2": {
+        "name": "",
+        "players": []
+    }
 }

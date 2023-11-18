@@ -1,8 +1,7 @@
 {
-    "Players": {
-
-    },
-    "Commentators": {
+    "Players": {},
+    "Commentators": {},
+    "Teams": {
 
     },
     "Characters": {
@@ -30,6 +29,7 @@
     },
     "Matches": {
         "Intermission": "VelvetRoom",
+        "Pools": "RecRoom",
         "Pre Top-8": "RecRoom",
         "Crew Battle": "GreenDarkHour",
         "First to 10": "RedDarkHour",
